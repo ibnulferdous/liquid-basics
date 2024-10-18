@@ -1,0 +1,24 @@
+{{ 'playground.css' | asset_url | stylesheet_tag }}
+
+<div class="container">
+  {% comment %} Variable declaration {% endcomment %}
+  {% assign phone_name = 'iPhone 16 Pro' %}
+  {% assign phone_description = 'The Apple iPhone 16 Pro offers all the flagship features in a compact form with a smaller screen size. It boasts an excellent camera for stunning photos, a powerful chip for seamless performance, and a great battery life to last all day. Advanced features like Apple Intelligence and an extra button for easier camera control enhance the user experience. The iPhone 16 Pro delivers the most upgraded flagship experience in a sleek design.' %}
+  {% assign phone_price = 999 %}
+  {% assign is_user_logged_in = false %}
+
+  {% comment %} Use of capture tag {% endcomment %}
+  {% capture price_text %}
+    {% if is_user_logged_in == true %}
+      <h2>Price: {{ phone_price }}</h2>
+      {% else %}
+      <h2>Please log in to see the price!</h2>
+    {% endif %}
+  {% endcapture %}
+
+  {% comment %} Rendering outputs on the website {% endcomment %}
+  <h1>{{ phone_name }}</h1>
+  {{ price_text }}
+  <p>{{ phone_description }}</p>
+  {{- 'Hello World from liquid!' -}}
+</div>

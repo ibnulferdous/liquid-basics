@@ -1,0 +1,21 @@
+{{ 'playground.css' | asset_url | stylesheet_tag }}
+
+<div class="container">
+  {% comment %} Example for tags {% endcomment %}
+  <h1>Product title: {{ product.title }}</h1>
+
+  {% comment %} conditional statement {% endcomment %}
+  {% if product.available %}
+    <h2>Price: {{ product.price }}</h2>
+  {% else %}
+    <h2 style="color: red;">Out of stock!</h2>
+  {% endif %}
+
+  {% comment %} Example for objects {% endcomment %}
+  <h1>Shop name: {{ shop.name }} (Global)</h1>
+  <h1>Product title: {{ product.title }} (Template specific)</h1>
+
+  {% comment %} Example for filters {% endcomment %}
+  <h1>Product title: {{ product.title | upcase | downcase | capitalize }}</h1>
+  <h2>Price: {{ product.price | money_with_currency }}</h2>
+</div>

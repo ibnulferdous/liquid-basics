@@ -1,0 +1,31 @@
+{{ 'playground.css' | asset_url | stylesheet_tag }}
+
+<div class="container">
+  {% assign title = '  ' %}
+  {% liquid
+    assign int_var = 10
+    assign str_var = '10'
+    assign float_var = 9.99
+  %}
+
+  <h1>Number</h1>
+  <h2>Integer: {{ int_var }}</h2>
+  <h2>Float: {{ float_var }}</h2>
+
+  {% if int_var == str_var %}
+    <h2>They are equal!</h2>
+  {% else %}
+    <h2>They are not equal!</h2>
+  {% endif %}
+
+  <h2>Total products: {{ shop.products_count }}</h2>
+  <h2>Total collections: {{ shop.collections_count }}</h2>
+
+  <h1>String</h1>
+  {% if title != blank %}
+    <h2>{{ title }}</h2>
+  {% else %}
+    <h2>Empty Title!</h2>
+  {% endif %}
+  <h2>Character Count: {{ title.size }}</h2>
+</div>

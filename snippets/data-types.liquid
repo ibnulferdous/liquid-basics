@@ -6,7 +6,58 @@
     assign int_var = 10
     assign str_var = '10'
     assign float_var = 9.99
+    assign physical_store = true
+    assign special_offer = '20% off on all items'
+    assign seven_days_name = 'Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday'
+    assign seven_days_name_arr = seven_days_name | split: ', '
   %}
+
+  <h1>Empty</h1>
+  {% if cart != empty %}
+    <h2>Total items in the cart: {{ cart.item_count }}</h2>
+    <h2>Total amount: {{ cart.total_price | money }}</h2>
+  {% else %}
+    <h2>The cart is empty!</h2>
+  {% endif %}
+
+  <h1>Array</h1>
+  <h2>{{ seven_days_name | json }}</h2>
+  <h2>{{ seven_days_name_arr | json }}</h2>
+
+  <ol>
+    {% for day in seven_days_name_arr %}
+      <li style="font-size: 2rem;">{{ day }}</li>
+    {% endfor %}
+  </ol>
+
+  <h2>{{ seven_days_name_arr[0] }}</h2>
+  <h2>{{ seven_days_name_arr[6] }}</h2>
+
+  <h1>Nil</h1>
+  {% if special_offer != null %}
+    <h2>{{ special_offer }}</h2>
+  {% else %}
+    <h2>No special offers available!</h2>
+  {% endif %}
+
+  {% comment %} Truthy and falsy values {% endcomment %}
+  {% if null %}
+    <h2>Truthy value</h2>
+  {% else %}
+    <h2>Falsy value</h2>
+  {% endif %}
+
+  <h1>Boolean</h1>
+  {% if physical_store %}
+    <button class="button">Store Locations</button>
+  {% else %}
+    <h2>We don't have physical store!</h2>
+  {% endif %}
+
+  {% comment %} shop.customer_accounts_enabled -> boolean value {% endcomment %}
+  {% if shop.customer_accounts_enabled %}
+    <button class="button">Login or Register</button>
+  {% endif %}
 
   <h1>Number</h1>
   <h2>Integer: {{ int_var }}</h2>

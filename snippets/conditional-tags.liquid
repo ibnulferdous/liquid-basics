@@ -1,0 +1,43 @@
+{{ 'playground.css' | asset_url | stylesheet_tag }}
+
+{% assign speaker_price = -15 %}
+{% assign customer_rating = 4.9 %}
+{% assign layout_type = 'slider' %}
+
+<div class="container">
+  {% comment %} Case {% endcomment %}
+  {% case layout_type %}
+    {% when 'full-width' %}
+      <h2>Full-width layout</h2>
+    {% when 'wide' %}
+      <h2>Page with 1500px</h2>
+    {% when 'narrow' %}
+      <h2>Page with 700px</h2>
+    {% else %}
+      <h2>Default lauoyt</h2>
+  {% endcase %}
+
+  {% comment %} Unless {% endcomment %}
+  {% unless speaker_price > 0 %}
+    <h2>Alert! invalid price.</h2>
+  {% elsif speaker_price > 100 %}
+    <h2>Premium products!</h2>
+  {% elsif speaker_price < 50 and customer_rating > 4.7 %}
+    <h2>Value for money products!</h2>
+  {% elsif speaker_price > 25 %}
+    <h2>Mid-range products!</h2>
+  {% else %}
+    <h2>Budget friendly products!</h2>
+  {% endunless %}
+
+  {% comment %} If {% endcomment %}
+  {% if speaker_price > 100 %}
+    <h2>Premium products!</h2>
+  {% elsif speaker_price < 50 and customer_rating > 4.7 %}
+    <h2>Value for money products!</h2>
+  {% elsif speaker_price > 25 %}
+    <h2>Mid-range products!</h2>
+  {% else %}
+    <h2>Budget friendly products!</h2>
+  {% endif %}
+</div>

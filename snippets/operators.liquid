@@ -1,0 +1,80 @@
+{{ 'playground.css' | asset_url | stylesheet_tag }}
+
+{% assign stock = 10 %}
+{% assign message = 'Welcome to Shopify!' %}
+
+<div class="container">
+  {% comment %} Contains {% endcomment %}
+  {% if message contains 'Shopify' %}
+    <h2>The message contains the word Shopify!</h2>
+  {% endif %}
+  {% comment %}
+    - stock > 5 and stock < 15 or stock == 20 and stock <= 10
+    - stock > 5 and stock < 15 or false and true
+    - stock > 5 and stock < 15 or false
+    - stock > 5 and true or false
+    - stock > 5 and true
+    - true and true
+    - true
+  {% endcomment %}
+  {% comment %} order of operation {% endcomment %}
+  {% if stock > 5 and stock < 15 or stock == 20 and stock <= 10 %}
+    <h2>The condition is true</h2>
+  {% endif %}
+
+  {% comment %}
+    And operator
+    {% if true and false %}
+      <h2>The condition is true</h2>
+    {% endif %}
+  {% endcomment %}
+
+  {% comment %}
+    Or operator
+    {% if false or false %}
+      <h2>The condition is true</h2>
+    {% endif %}
+  {% endcomment %}
+
+  {% comment %}
+    Less than or equal to
+    {% if stock <= 10 %}
+      <h2>The stock is less than or equal to 10</h2>
+    {% endif %}
+  {% endcomment %}
+
+  {% comment %}
+    Less than
+    {% if stock < 10 %}
+      <h2>The stock is less than 10</h2>
+    {% endif %}
+  {% endcomment %}
+
+  {% comment %}
+    Greater than or equal to
+    {% if stock >= 10 %}
+      <h2>The stock is greater than or equal to 10</h2>
+    {% endif %}
+  {% endcomment %}
+
+  {% comment %}
+    Greater than
+    {% if stock > 10 %}
+      <h2>The stock is greater than 10</h2>
+    {% endif %}
+  {% endcomment %}
+
+  {% comment %}
+    Equal
+    {% if stock == 10 %}
+      <h2>The stock is equal to 10</h2>
+    {% endif %}
+  {% endcomment %}
+
+  {% comment %}
+    Does not Equal
+    {% if stock != 10 %}
+      <h2>The stock is not equal to 10</h2>
+    {% endif %}
+  {% endcomment %}
+</div>
